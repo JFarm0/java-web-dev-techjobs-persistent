@@ -51,8 +51,10 @@ public class HomeController {
             return "add";
         }
 //        STUCK RIGHT HERE! Part 3: Updating Home Controller
-//        model.addAttribute("employerId", employerRepository.findById(employerId));
-//        model.addAttribute("employerId", employerId);
+//        model.addAttribute("employer", employerRepository.findById(employerId));
+//        model.addAttribute("employer", employerId);
+//        model.addAttribute("employer", employerRepository.findById(employerId));
+//        model.addAttribute("employer", employerId);
         jobRepository.save(newJob);
         return "redirect:";
     }
