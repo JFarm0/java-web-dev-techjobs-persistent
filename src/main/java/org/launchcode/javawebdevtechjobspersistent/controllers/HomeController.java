@@ -1,5 +1,6 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
+import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Job;
 import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
@@ -50,11 +51,8 @@ public class HomeController {
             model.addAttribute(new Job());
             return "add";
         }
-//        STUCK RIGHT HERE! Part 3: Updating Home Controller
-//        model.addAttribute("employer", employerRepository.findById(employerId));
-//        model.addAttribute("employer", employerId);
-//        model.addAttribute("employer", employerRepository.findById(employerId));
-//        model.addAttribute("employer", employerId);
+        Employer employer = employerRepository.findById(employerId).orElse(new Employer());
+        newJob.setEmployer(employer);
         jobRepository.save(newJob);
         return "redirect:";
     }
