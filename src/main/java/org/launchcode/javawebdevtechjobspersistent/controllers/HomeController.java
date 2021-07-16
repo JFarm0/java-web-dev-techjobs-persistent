@@ -34,6 +34,7 @@ public class HomeController {
     public String index(Model model) {
 
         model.addAttribute("title", "My Jobs");
+        model.addAttribute("jobs", jobRepository.findAll());
 
         return "index";
     }
@@ -67,9 +68,10 @@ public class HomeController {
 
     @GetMapping("view/{jobId}")
     public String displayViewJob(Model model, @PathVariable int jobId) {
+        Job jobObj = jobRepository.findById(jobId).orElse(new Job());
+        model.addAttribute("job", jobObj);
 
         return "view";
     }
-
 
 }
